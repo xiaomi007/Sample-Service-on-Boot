@@ -13,11 +13,21 @@ import java.util.Date;
 
 /**
  * Created by xiaomi on 14/12/18.
+ *
+ * static methods
  */
 public class Util {
 
     private static final String TAG = Util.class.getSimpleName();
 
+
+    /**
+     * Util to set an Alarm with the Alarm Manager
+     *
+     * @param context actual app context.
+     * @param date date to set the alarm.
+     * @param isStartDate choose between start date and end date.
+     */
     public static void setAlarm(Context context, Date date, boolean isStartDate){
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, WakeUpOnBoot.class);

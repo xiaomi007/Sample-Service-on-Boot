@@ -12,6 +12,8 @@ import java.util.Date;
 
 /**
  * Created by xiaomi on 14/12/18.
+ *
+ * Wakeful Broadcast Receiver which received intent from boot completed or from the alarm manager.
  */
 public class WakeUpOnBoot extends WakefulBroadcastReceiver {
 

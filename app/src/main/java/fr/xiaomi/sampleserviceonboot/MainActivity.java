@@ -59,8 +59,6 @@ public class MainActivity extends ActionBarActivity {
      */
     public static class PlaceholderFragment extends Fragment {
 
-        private static final String TAG = PlaceholderFragment.class.getSimpleName();
-
         Button start, stop, valid, reset;
         TextView tvStart, tvEnd;
         TimePickerDialog startDialog, endDialog;
