@@ -150,9 +150,6 @@ public class MainActivity extends ActionBarActivity {
                     editor.putLong("end", endDate.getTime());
                     editor.apply();
 
-                    //setAlarm(startDate, true);
-                    //setAlarm(endDate, false);
-
                     Util.setAlarm(getActivity(), startDate, true);
                     Util.setAlarm(getActivity(), endDate, false);
 
