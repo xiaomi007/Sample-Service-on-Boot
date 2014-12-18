@@ -1,16 +1,10 @@
 package fr.xiaomi.sampleserviceonboot;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -71,8 +65,6 @@ public class MainActivity extends ActionBarActivity {
         TextView tvStart, tvEnd;
         TimePickerDialog startDialog, endDialog;
         Date startDate, endDate;
-        Intent setStartAlarm, setEndAlarm;
-
 
         public PlaceholderFragment() {
 
@@ -140,7 +132,6 @@ public class MainActivity extends ActionBarActivity {
 
                         @Override
                         public void onSubmit(Date date) {
-                            SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd  HH:mm");
                             tvEnd.setText(format.format(date));
                             endDate = date;
                             endDialog.dismiss();
@@ -180,30 +171,6 @@ public class MainActivity extends ActionBarActivity {
                     tvEnd.setText(format.format(endDate));
                 }
             });
-        }
-
-        private void setAlarm(Date date, boolean isStarting){
-
-            AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
-            Intent intent = new Intent(getActivity(), WakeUpOnBoot.class);
-            intent.putExtra("service", isStarting);
-            Calendar c = Calendar.getInstance();
-            c.setTime(date);
-            c.set(Calendar.SECOND, 0);
-            Date newDate = c.getTime();
-
-            long timeElapsed = SystemClock.elapsedRealtime() + (newDate.getTime() - Calendar.getInstance().getTimeInMillis());
-            SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd  HH:mm:ss");
-            Log.d(TAG, format.format(new Date(Calendar.getInstance().getTimeInMillis() + timeElapsed - SystemClock.elapsedRealtime())));
-            PendingIntent pendingAlarm;
-            if(isStarting) {
-                pendingAlarm = PendingIntent.getBroadcast(getActivity(), 0, intent, 0);
-            } else {
-                pendingAlarm = PendingIntent.getBroadcast(getActivity(), 1, intent, 0);
-            }
-
-            alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, timeElapsed, pendingAlarm);
-
         }
 
     }

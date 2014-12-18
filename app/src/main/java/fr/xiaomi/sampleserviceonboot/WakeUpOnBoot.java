@@ -7,6 +7,7 @@ import android.support.v4.content.WakefulBroadcastReceiver;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -32,10 +33,8 @@ public class WakeUpOnBoot extends WakefulBroadcastReceiver {
             Log.d(TAG, "start ms:" + startMs);
             Log.d(TAG, "end ms:" + endMs);
 
-            if (startMs != 0) {
+            if (startMs != 0 && endMs != 0 && endMs > Calendar.getInstance().getTimeInMillis()) {
                 Util.setAlarm(context, new Date(startMs), true);
-            }
-            if (endMs != 0) {
                 Util.setAlarm(context, new Date(endMs), false);
             }
 
