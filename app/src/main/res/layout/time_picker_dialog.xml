@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/creeper"
+        android:layout_width="1px"
+        android:layout_height="1px"
+        android:layout_centerInParent="true" />
+
+    <DatePicker
+        android:id="@+id/date_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        android:calendarViewShown="false" />
+
+    <TimePicker
+        android:id="@+id/time_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_picker"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/date_time_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/time_picker"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@id/creeper"
+        android:layout_toEndOf="@id/creeper"
+        android:background="@drawable/button"
+        android:text="@string/time_picker_set" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/time_picker"
+        android:layout_margin="5dp"
+        android:layout_toLeftOf="@id/creeper"
+        android:layout_toStartOf="@id/creeper"
+        android:background="@drawable/button"
+        android:text="@string/time_picker_cancel"
+
+        />
+
+
+
+</RelativeLayout>

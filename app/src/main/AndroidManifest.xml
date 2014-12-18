@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.xiaomi.sampleserviceonboot" >
 
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -16,6 +19,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".ServiceToStart"
+            android:exported="false"
+            android:label="@string/service_label"/>
+
+        <receiver android:name=".WakeUpOnBoot"
+            android:exported="false"
+            android:label="@string/receiver_label">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+            </receiver>
+
+
+
     </application>
 
 </manifest>
